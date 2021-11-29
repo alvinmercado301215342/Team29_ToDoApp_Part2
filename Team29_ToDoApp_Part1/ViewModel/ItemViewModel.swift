@@ -12,7 +12,21 @@ import RealmSwift
 class ItemViewModel: ObservableObject {
     @Published var title = ""
     @Published var detail = ""
-    @Published var date = Date()
+    
+    @Published var date : Date = Date()
+    
+     //var dates: String {
+        //formatter.dateFormat = "MMMM, d, yyyy"
+        //return formatter.string(from: date)
+    //}
+    
+    private lazy var formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .short
+        return formatter
+    }()
+    
     @Published var isCompleted : Bool = false
     var string : String {
         isCompleted ? "Completed" : "Not Completed"
@@ -36,7 +50,7 @@ class ItemViewModel: ObservableObject {
     }
     
     func addData(presentation: Binding<PresentationMode>) {
-        if title == "" || detail == "" { return }
+        if title == "" || detail == ""  { return }
         
         let item = Item()
         item.title = title
@@ -53,6 +67,8 @@ class ItemViewModel: ObservableObject {
             
             availableObject.title = title
             availableObject.detail = detail
+            //availableObject.dates = dates
+
         }
         
         fetchData()

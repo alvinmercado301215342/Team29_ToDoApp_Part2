@@ -22,6 +22,7 @@ struct AddItemView: View {
                 }
                 Section(header: Text("Date")) {
                     DatePicker("Enter date", selection: $model.date)
+                        .datePickerStyle(GraphicalDatePickerStyle())
                 }
                 Section(header: Text("")) {
                     Toggle("Is completed", isOn: $model.isCompleted)

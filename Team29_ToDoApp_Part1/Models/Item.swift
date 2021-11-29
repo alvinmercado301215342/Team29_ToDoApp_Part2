@@ -15,5 +15,5 @@ class Item: Object, Identifiable {
     @objc dynamic var detail = ""
    // @objc dynamic var isCompleted: Bool = false
     
-   // @objc dynamic var date : Date 
+    //@objc dynamic var date = Date ()
 }
